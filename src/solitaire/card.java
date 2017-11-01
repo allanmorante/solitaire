@@ -3,7 +3,7 @@ package solitaire;
 public class Card {
 
 	
-	private String color;
+	private int color;
 	private int number;
 	private boolean visible;
 	
@@ -11,9 +11,16 @@ public class Card {
 	public Card(){
 		
 	}
+	//constructor with visible set as true by default
+	public Card(int color, int number){
+			
+			this.color = color;
+			this.number = number;
+			this.visible = true;
+	}
 	
 	//constructor
-	public Card(String color, int number, boolean visible){
+	public Card(int color, int number, boolean visible){
 		
 		this.color = color;
 		this.number = number;
@@ -22,10 +29,10 @@ public class Card {
 	
 	
 	//define color of the card
-	public void setColor(String color){		
+	public void setColor(int color){		
 		this.color = color;
 	}
-	public String getColor(){
+	public int getColor(){
 		return color;
 	}
 	
@@ -74,6 +81,24 @@ public class Card {
 		return nameCard;
 	}
 	
+	public String nameColor(){
+		String nameColor = "";
+		
+		switch(color){
+		
+			case 1 : nameColor = "Carreau";
+			break;
+			case 2 : nameColor = "Coeur";
+			break;
+			case 3 : nameColor = "Pique";
+			break;
+			case 4 : nameColor = "Trèfle";
+			break;
+		}
+		
+		return nameColor;
+	}
+	
 	
 	//define visibility of the card
 	public void setVisible(boolean visible){
@@ -89,7 +114,7 @@ public class Card {
 			return "?";
 		}
 		else{
-			return nameCard() + " de " + getColor();
+			return nameCard() + " de " + nameColor();
 		}
 		
 	}
