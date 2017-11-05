@@ -1,12 +1,13 @@
 package solitaire;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 
 public class Stack {
 	
-	private ArrayList<Card> stack = new ArrayList<Card>();
+	protected ArrayList<Card> stack = new ArrayList<Card>();
 	
 	//default constructor
 	public Stack(){
@@ -17,13 +18,29 @@ public class Stack {
 		this.stack = stack;
 	}
 	
-	public void addElementOnIndice(int i, Card element){
-		this.stack.add(i, element);
-	}
-	
 	//Getter
 	public ArrayList<Card> getStack(){
 		return stack;
+	}
+	//Setter
+	public void setStack(ArrayList<Card> stack){
+		this.stack = stack;
+	}
+	
+	// add element on specified indice i
+	public void addElement(int i, Card element){
+		this.stack.add(i, element);
+	}
+	//add element on last indice	
+	public void addElement(Card element) {
+		// TODO Auto-generated method stub
+		this.stack.add(element);
+		
+	}
+	
+	//mix fonction
+	public void shuffleCards(){
+		Collections.shuffle(this.stack);	
 	}
 	
 	
@@ -38,15 +55,5 @@ public class Stack {
 //		return fullString;
 //	}
 	
-	public static void main(String[] args) {
-		Stack test = new Stack();
-		int i;
-		
-		for(i=0; i<13; i++){
-			test.addElementOnIndice(i, new Card(1, i+1));
-		}
-		System.out.println(test.getStack());
-		
-	}
 	
 }
